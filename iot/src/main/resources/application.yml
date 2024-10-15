@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: ioc
+mqtt:
+  hostUrl: tcp://192.168.56.103:1883
+  username: dev
+  password: dev
+  client-id: MQTT-CLIENT-DEV
+  cleanSession: true
+  reconnect: true
+  timeout: 100
+  keepAlive: 100
+  defaultTopic: client/dev/report
+  serverTopic: server/dev/report
+  isOpen: true
+  qos: 0
+
