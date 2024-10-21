@@ -17,12 +17,6 @@ public class ThreadPoolExample {
         TimeUnit unit = TimeUnit.SECONDS; // 时间单位
         BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>(); // 任务队列
 
-        // 创建线程工厂
-//        ThreadFactory threadFactory = Executors.defaultThreadFactory();
-//
-//        // 创建拒绝策略
-//        RejectedExecutionHandler handler = new ThreadPoolExecutor.AbortPolicy();
-
         // 创建线程池
         ThreadPoolExecutor executor = new ThreadPoolExecutor(
                 corePoolSize,
@@ -30,8 +24,6 @@ public class ThreadPoolExample {
                 keepAliveTime,
                 unit,
                 workQueue
-//                threadFactory,
-//                handler
         );
 
         // 提交任务
