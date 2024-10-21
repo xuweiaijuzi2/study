@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuwei.test_transactional.mapper.UserMapper">
+    <insert id="addOne" parameterType="com.xuwei.test_transactional.bean.User">
+        insert into user (`name`,age,gender)values(#{name},#{age},#{gender})
+    </insert>
+
+    <select id="getUsers" resultType="com.xuwei.test_transactional.bean.User">
+        select * from user order by id asc
+    </select>
+
+</mapper>
