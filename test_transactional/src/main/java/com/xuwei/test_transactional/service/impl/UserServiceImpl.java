@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @program: study
@@ -23,6 +24,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private ThreadPoolExecutor executor;
+
     @Transactional
     @Override
     public void addOne(User user) {
@@ -31,6 +35,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageInfo<User> getUsers(int pageNum, int pageSize) {
+        /*executor.submit(() -> {
+            for (int i = 0; i < 10; i++) {
+                System.out.println(i);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });*/
         PageHelper.startPage(pageNum, pageSize);
         List<User> users = userMapper.getUsers(pageNum,pageSize);
         return new PageInfo<>(users);

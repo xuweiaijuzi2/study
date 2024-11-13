@@ -3,8 +3,8 @@ spring:
     name: test_transactional
   datasource:
     url: jdbc:mysql://47.109.152.66:3306/study?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-    username: xuwei
-    password: Xu&Wei1234
+    username: root
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
@@ -15,4 +15,4 @@ thread-pool-param:
   corePoolSize: 4
   maximumPoolSize: 10
   keepAliveTime: 60
-  unit: DAYS # NANOSECONDS、MICROSECONDS、MILLISECONDS、SECONDS、MINUTES、HOURS、DAYS
+  unit: SECONDS # NANOSECONDS、MICROSECONDS、MILLISECONDS、SECONDS、MINUTES、HOURS、DAYS

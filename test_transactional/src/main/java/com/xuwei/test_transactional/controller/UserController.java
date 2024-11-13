@@ -2,9 +2,7 @@ package com.xuwei.test_transactional.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.xuwei.test_transactional.bean.User;
-import com.xuwei.test_transactional.config.ThreadPoolParam;
 import com.xuwei.test_transactional.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -18,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private UserService userService;
-    @Autowired
-    private ThreadPoolParam threadPoolParam;
 
 
     /*构造器注入*/
@@ -29,16 +25,6 @@ public class UserController {
 
     @GetMapping("test/{message}")
     public String test(@PathVariable(value = "message") String message){
-        System.out.println(userService);
-        System.out.println(message);
-
-        System.out.println("-----------------------------------------");
-        System.out.println("thread-pool-param");
-        System.out.println("corePoolSize: "+threadPoolParam.getCorePoolSize());
-        System.out.println("maximumPoolSize: "+threadPoolParam.getMaximumPoolSize());
-        System.out.println("unit: "+threadPoolParam.getUnit());
-        System.out.println("keepAliveTime: "+threadPoolParam.getKeepAliveTime());
-        System.out.println("-----------------------------------------");
 
         return "I have received your message,it is " + message;
     }
@@ -47,6 +33,7 @@ public class UserController {
     public String addOne(@RequestBody User user){
         if (user == null || user.getName() == null)
             return "参数为空";
+        System.out.println(user);
         userService.addOne(user);
         return "插入成功";
     }
@@ -61,7 +48,4 @@ public class UserController {
     public PageInfo<User> getUsers(@RequestParam int pageNum, @RequestParam int pageSize) {
         return userService.getUsers(pageNum, pageSize);
     }
-
-
-
 }

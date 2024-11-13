@@ -18,14 +18,14 @@ import java.util.concurrent.TimeUnit;
 public class ThreadPoolConfig {
 
     @Bean
-    public ThreadPoolExecutor threadPoolExecutor(){
+    public ThreadPoolExecutor threadPoolExecutor(ThreadPoolParam param){
 
 
         // 定义线程池参数
-        int corePoolSize = 4;        // 核心线程数
-        int maximumPoolSize = 10;    // 最大线程数
-        long keepAliveTime = 60;      // 线程空闲时间
-        TimeUnit unit = TimeUnit.SECONDS; // 时间单位
+        int corePoolSize = param.getCorePoolSize();        // 核心线程数
+        int maximumPoolSize = param.getMaximumPoolSize();    // 最大线程数
+        long keepAliveTime = param.getKeepAliveTime();      // 线程空闲时间
+        TimeUnit unit = param.getUnit(); // 时间单位
         BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>(); // 任务队列
 
         // 创建线程池
